@@ -17,10 +17,7 @@ public class Usuario {
 
     @Column(nullable = false, length = 40)
     private String nomeUsuario;
-
-    @Column(nullable = false, length = 11)
-    private String telUsuario;
-
+    
     @Column(nullable = false, length = 254)
     private String emailUsuario;
 
