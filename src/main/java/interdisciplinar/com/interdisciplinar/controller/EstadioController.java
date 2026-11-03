@@ -25,7 +25,7 @@ public class EstadioController {
     @PostMapping("/salvar")
     public String salvar(@ModelAttribute Estadio estadio) {
         estadioService.save(estadio);
-        return "redirect:/usuarios/listar";
+        return "redirect:/estadios/listar";
     }
 
      @GetMapping("/listar")
@@ -38,7 +38,7 @@ public class EstadioController {
      @GetMapping("/criar")
     public String criarForm(Model model) {
         model.addAttribute("estadio", new Estadio());
-        return "estadio/formularioEstudio";
+        return "estadio/formularioEstadio";
     }
     
 }

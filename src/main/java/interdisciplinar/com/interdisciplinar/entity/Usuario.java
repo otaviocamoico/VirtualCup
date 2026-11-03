@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import interdisciplinar.com.interdisciplinar.enums.Role;
+import jakarta.persistence.PrePersist;
+import java.time.LocalDateTime;
 
 @Entity
 public class Usuario {
@@ -27,6 +29,16 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    @Column(name = "data_cadastro", nullable = false, updatable = false)
+    private LocalDateTime dataCadastro;
+
+    @PrePersist
+    protected void definirDataCadastro() {
+    if (this.dataCadastro == null) {
+    this.dataCadastro = LocalDateTime.now();
+    }
+}
 }
 
     
