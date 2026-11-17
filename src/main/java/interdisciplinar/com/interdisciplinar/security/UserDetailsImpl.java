@@ -1,0 +1,57 @@
+
+package interdisciplinar.com.interdisciplinar.security;
+
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import interdisciplinar.com.interdisciplinar.entity.Usuario;
+
+public class UserDetailsImpl implements UserDetails {
+
+    private final Usuario usuario;
+
+    public UserDetailsImpl(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(
+            new SimpleGrantedAuthority(usuario.getPapel())
+        );
+    }
+
+    @Override
+    public String getPassword() {
+        return usuario.getSenhaUsuario();
+    }
+
+    @Override
+    public String getUsername() {
+        return usuario.getEmailUsuario();
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+}

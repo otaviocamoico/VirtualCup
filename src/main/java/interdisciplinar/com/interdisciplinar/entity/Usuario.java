@@ -9,8 +9,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import interdisciplinar.com.interdisciplinar.enums.Role;
 import jakarta.persistence.PrePersist;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Usuario {
     @Id
@@ -25,6 +34,15 @@ public class Usuario {
 
     @Column(nullable = false, length = 10)
     private String senhaUsuario;
+
+    @Column(nullable = false, unique = true, length = 150)
+    private String email;
+
+    @Column(nullable = false, length = 255)
+    private String senha;
+
+    @Column(nullable = false, length = 20)
+    private String papel = "ROLE_USER";
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
