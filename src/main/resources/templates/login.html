@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | VirtualCup</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+
+</head>
+<body class="vc-login-page">
+    <main class="vc-login-layout">
+        <section class="vc-login-visual">
+            <div class="vc-login-visual-content">
+                <!-- Logo -->
+                <a th:href="@{/virtualcup}" class="vc-login-brand">
+                    <span class="vc-login-brand-symbol">
+                        VC
+                    </span>
+                    <span class="vc-login-brand-name">
+                        VirtualCup
+                        <small>BRASIL 2027</small>
+                    </span>
+                </a>
+
+                <!-- Apresentação -->
+                <div class="vc-login-message">
+                    <span class="vc-login-tag">
+                        COPA DO MUNDO FEMININA
+                    </span>
+                    <h1>
+                        O futebol conecta o mundo.
+                        <span>O Brasil recebe você.</span>
+                    </h1>
+                    <p>
+                        Acesse sua conta e explore tudo sobre
+                        a Copa do Mundo Feminina de 2027.
+                        Conheça os estádios, acompanhe as seleções
+                        e viva essa experiência.
+                    </p>
+                </div>
+                <div class="vc-login-bottom">
+                    FUTEBOL, CULTURA E PAIXÃO SEM FRONTEIRAS.
+                </div>
+            </div>
+        </section>
+
+        <section class="vc-login-panel">
+            <div class="vc-login-card">
+                <!-- Voltar -->
+                <a th:href="@{/virtualcup}" class="vc-login-back">
+                    ← Voltar para o início
+                </a>
+
+                <!-- Cabeçalho -->
+                <div class="vc-login-heading">
+                    <span class="vc-login-section-tag">
+                        BEM-VINDO AO VIRTUALCUP
+                    </span>
+                    <h2>Acesse sua conta</h2>
+                    <p>
+                        Informe seus dados para entrar na plataforma.
+                    </p>
+                </div>
+
+                <!-- Mensagem de erro -->
+                <div class="alert alert-danger"
+                     role="alert"
+                     th:if="${param.erro != null}">
+
+                    E-mail ou senha incorretos.
+                    Verifique seus dados e tente novamente.
+
+                </div>
+
+                <!-- Mensagem de logout -->
+                <div class="alert alert-success"
+                     role="alert"
+                     th:if="${param.logout != null}">
+
+                    Você saiu do sistema com sucesso.
+
+                </div>
+
+                <!-- Formulário de login -->
+                <form th:action="@{/login}" method="post">
+                    <!-- E-mail -->
+                    <div class="mb-4">
+                        <label for="email" class="form-label">
+                            E-mail
+                        </label>
+                        <input
+                            type="email"
+                            class="form-control vc-login-input"
+                            id="email"
+                            name="email"
+                            placeholder="Digite seu e-mail"
+                            autocomplete="username"
+                            required
+                        >
+                    </div>
+
+                    <!-- Senha -->
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">
+                            Senha
+                        </label>
+                        <input
+                            type="password"
+                            class="form-control vc-login-input"
+                            id="senha"
+                            name="senha"
+                            placeholder="Digite sua senha"
+                            autocomplete="current-password"
+                            required
+                        >
+                    </div>
+
+                    <!-- Botão -->
+                    <button type="submit"
+                            class="btn btn-vc-primary vc-login-submit">
+
+                        Entrar na plataforma
+                    </button>
+                </form>
+
+                <!-- Cadastro -->
+                <div class="vc-login-register">
+                    <p>
+                        Ainda não possui uma conta?
+                        <a th:href="@{/usuarios/criar}">
+                            Cadastre-se
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

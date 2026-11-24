@@ -1,0 +1,62 @@
+:root {
+    /* Cores principais */
+    --vc-green: #087443;
+    --vc-green-dark: #123B2B;
+
+    /* Cores secundárias */
+    --vc-yellow: #F5CE36;
+    --vc-blue: #174A91;
+
+    /* Cores neutras */
+    --vc-white: #F7F8F3;
+    --vc-text: #1D2922;
+    --vc-muted: #65736B;
+}
+
+/* Configurações gerais */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--vc-white);
+    color: var(--vc-text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Botão principal */
+
+.btn-vc-primary {
+    background-color: var(--vc-green);
+    color: #FFFFFF;
+    border: 1px solid var(--vc-green);
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-vc-primary:hover {
+    background-color: var(--vc-green-dark);
+    border-color: var(--vc-green-dark);
+    color: #FFFFFF;
+}
+
+/* Botão secundário */
+
+.btn-vc-outline {
+    background-color: transparent;
+    color: var(--vc-green);
+    border: 1px solid var(--vc-green);
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-vc-outline:hover {
+    background-color: var(--vc-green);
+    color: #FFFFFF;
+}

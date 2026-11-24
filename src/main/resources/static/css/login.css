@@ -1,0 +1,416 @@
+
+/* ========================================
+   LOGIN - VIRTUALCUP
+   ======================================== */
+
+   .vc-login-page {
+    min-height: 100vh;
+    background-color: var(--vc-white);
+}
+
+/* Estrutura principal */
+
+.vc-login-layout {
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+}
+
+
+/* ========================================
+   LADO ESQUERDO - APRESENTAÇÃO
+   ======================================== */
+
+.vc-login-visual {
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 55px 65px;
+
+    background-image:
+        linear-gradient(
+            145deg,
+            rgba(18, 59, 43, 0.94),
+            rgba(8, 116, 67, 0.78)
+        ),
+        url('/img/estadio-brasil.png');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: #FFFFFF;
+}
+
+.vc-login-visual-content {
+    width: 100%;
+    max-width: 570px;
+    margin: 0 auto;
+
+    min-height: 650px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/* Marca */
+
+.vc-login-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    width: fit-content;
+
+    text-decoration: none;
+    color: var(--vc-white);
+}
+
+.vc-login-brand-symbol {
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid var(--vc-yellow);
+    border-radius: 10px;
+
+    color: var(--vc-yellow);
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.vc-login-brand-name {
+
+    display: flex;
+    flex-direction: column;
+
+    font-size: 23px;
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.vc-login-brand-name small {
+
+    margin-top: 5px;
+
+    color: var(--vc-yellow);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+
+/* Mensagem de apresentação */
+
+.vc-login-message {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.vc-login-tag {
+
+    display: inline-block;
+
+    margin-bottom: 25px;
+    padding: 9px 14px;
+
+    border: 1px solid rgba(245, 206, 54, 0.6);
+    border-radius: 4px;
+
+    color: var(--vc-yellow);
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.vc-login-message h1 {
+
+    color: #FFFFFF;
+
+    font-size: clamp(36px, 4vw, 55px);
+    font-weight: 800;
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+}
+
+.vc-login-message h1 span {
+
+    display: block;
+    color: var(--vc-yellow);
+}
+
+.vc-login-message p {
+
+    max-width: 480px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+/* Informação inferior */
+
+.vc-login-bottom {
+
+    color: var(--vc-yellow);
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+
+/* ========================================
+   LADO DIREITO - FORMULÁRIO
+   ======================================== */
+
+.vc-login-panel {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 35px;
+
+    background-color: var(--vc-white);
+}
+
+.vc-login-card {
+
+    width: 100%;
+    max-width: 430px;
+}
+
+
+/* Link voltar */
+
+.vc-login-back {
+
+    display: inline-block;
+
+    margin-bottom: 55px;
+
+    color: var(--vc-muted);
+    font-size: 14px;
+
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.vc-login-back:hover {
+
+    color: var(--vc-green);
+}
+
+
+/* Cabeçalho */
+
+.vc-login-heading {
+    margin-bottom: 35px;
+}
+
+.vc-login-section-tag {
+
+    display: block;
+
+    margin-bottom: 13px;
+
+    color: var(--vc-green);
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.vc-login-heading h2 {
+
+    color: var(--vc-green-dark);
+
+    font-size: 35px;
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+.vc-login-heading p {
+
+    color: var(--vc-muted);
+
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* Campos */
+
+.vc-login-card .form-label {
+
+    color: var(--vc-green-dark);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    margin-bottom: 9px;
+}
+
+.vc-login-input {
+
+    min-height: 52px;
+
+    padding: 12px 15px;
+
+    background-color: #FFFFFF;
+
+    border: 1px solid #D9E2DC;
+    border-radius: 7px;
+
+    font-size: 14px;
+}
+
+.vc-login-input:focus {
+
+    border-color: var(--vc-green);
+
+    box-shadow: 0 0 0 3px rgba(8, 116, 67, 0.12);
+
+}
+
+
+/* Botão */
+
+.vc-login-submit {
+
+    width: 100%;
+    min-height: 52px;
+
+    margin-top: 20px;
+
+    border-radius: 7px;
+
+    font-size: 15px;
+}
+
+
+/* Cadastro */
+
+.vc-login-register {
+
+    margin-top: 30px;
+
+    text-align: center;
+}
+
+.vc-login-register p {
+
+    color: var(--vc-muted);
+    font-size: 14px;
+}
+
+.vc-login-register a {
+
+    color: var(--vc-green);
+
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.vc-login-register a:hover {
+
+    color: var(--vc-green-dark);
+    text-decoration: underline;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+@media (max-width: 900px) {
+
+    .vc-login-visual {
+        padding: 40px;
+    }
+
+    .vc-login-panel {
+        padding: 40px 25px;
+    }
+
+    .vc-login-message h1 {
+        font-size: 39px;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .vc-login-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .vc-login-visual {
+        min-height: 380px;
+        padding: 35px 25px;
+    }
+
+    .vc-login-visual-content {
+        min-height: 310px;
+    }
+
+    .vc-login-message {
+        margin-top: 40px;
+        margin-bottom: 35px;
+    }
+
+    .vc-login-message h1 {
+        font-size: 36px;
+    }
+
+    .vc-login-message p {
+        font-size: 14px;
+    }
+
+    .vc-login-panel {
+        padding: 55px 25px;
+    }
+
+    .vc-login-back {
+        margin-bottom: 35px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .vc-login-visual {
+        padding: 30px 20px;
+    }
+
+    .vc-login-message h1 {
+        font-size: 32px;
+    }
+
+    .vc-login-panel {
+        padding: 45px 20px;
+    }
+
+    .vc-login-heading h2 {
+        font-size: 30px;
+    }
+
+}

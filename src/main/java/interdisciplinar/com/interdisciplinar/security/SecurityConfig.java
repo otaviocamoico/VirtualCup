@@ -1,4 +1,3 @@
-
 package interdisciplinar.com.interdisciplinar.security;
 
 import org.springframework.context.annotation.Bean;
@@ -29,7 +28,7 @@ public class SecurityConfig {
                     "/usuarios/criar",
                     "/css/**",
                     "/js/**",
-                    "/images/**",
+                    "/img/**",
                     "/copas/**",
                     "/estadios/**",
                     "/partidas/**",

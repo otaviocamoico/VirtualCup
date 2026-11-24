@@ -1,18 +1,252 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema AllThings</title>
+    <title>VirtualCup | Copa do Mundo Feminina 2027</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX"
+        crossorigin="anonymous">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
 </head>
 <body>
-    <h1 style="text-align: center;">Sistema AllThings</h1>
-    <h2 style="text-align: center;">ERP - Enterprise Resource Planning</h2>
-    <form action="/login" method="get">
-        <button type="submit">Acesso ao Sistema</button>
-    </form>
-    <form action="/usuarios/criar" method="get">
-        <button type="submit">Cadastre-se</button>
-    </form>
+<header class="vc-header">
+    <nav class="vc-navbar">
+        <div class="container vc-navbar-container">
+            <!-- Marca do VirtualCup -->
+            <a href="/virtualcup" class="vc-brand">
+                <span class="vc-brand-symbol">VC</span>
+                <span class="vc-brand-name">
+                    VirtualCup
+                    <small>BRASIL 2027</small>
+                </span>
+            </a>
+            <!-- Links de navegação -->
+            <ul class="vc-nav-links">
+                <li>
+                    <a href="#inicio" class="vc-nav-link active">
+                        Início
+                    </a>
+                </li>
+                <li>
+                    <a href="#estadios" class="vc-nav-link">
+                        Estádios
+                    </a>
+                </li>
+                <li>
+                    <a href="#selecoes" class="vc-nav-link">
+                        Seleções
+                    </a>
+                </li>
+                <li>
+                    <a href="#partidas" class="vc-nav-link">
+                        Partidas
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Acesso do usuário -->
+            <div class="vc-nav-actions">
+                <a href="/login" class="vc-login-link">
+                    Entrar
+                </a>
+                <a href="/usuarios/criar" class="vc-register-link">
+                    Cadastre-se
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+<main>
+    <section id="inicio" class="vc-hero">
+        <div class="container">
+            <div class="vc-hero-content">
+                <span class="vc-hero-tag">
+                    COPA DO MUNDO FEMININA • BRASIL 2027
+                </span>
+                <h1>
+                    O Brasil é o palco.
+                    <span>O mundo é o espetáculo.</span>
+                </h1>
+                <p>
+                    De diferentes continentes para um só lugar.
+                    Descubra os estádios, conheça as seleções
+                    e acompanhe a maior competição do futebol
+                    feminino no Brasil.
+                </p>
+                <div class="vc-hero-buttons">
+                    <a href="#estadios" class="btn btn-vc-primary btn-lg">
+                        Explorar o guia
+                    </a>
+                    <a href="/login" class="btn btn-vc-outline btn-lg">
+                        Acessar sistema
+                    </a>
+                </div>
+                <div class="vc-hero-caption">
+                    <span>BRASIL 2027</span>
+                    <span class="vc-caption-divider"></span>
+                    <span>Futebol, cultura e paixão sem fronteiras.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="vc-features" id="funcionalidades">
+        <div class="container">
+        <div class="vc-section-heading text-center">
+            <span class="vc-section-tag">
+                DESCUBRA A COMPETIÇÃO
+            </span>
+            <h2>
+                Uma Copa. Muitas histórias.
+            </h2>
+            <p>
+                Explore tudo o que a Copa do Mundo Feminina de 2027
+                tem a oferecer. Do Brasil para o mundo.
+            </p>
+        </div>
+        <!-- Cards -->
+        <div class="row g-4">
+
+            <div class="col-md-6 col-xl-3">
+                <article class="vc-feature-card h-100" id="estadios">
+                    <span class="vc-feature-number">01</span>
+                    <span class="vc-feature-category">
+                        GUIA DE SEDES
+                    </span>
+                    <h3>Estádios</h3>
+                    <p>
+                        Conheça os estádios brasileiros que receberão
+                        os jogos da competição e descubra suas
+                        características.
+                    </p>
+                    <span class="vc-feature-label">
+                        Conheça as arenas
+                    </span>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-xl-3">
+                <article class="vc-feature-card vc-card-yellow h-100"
+                         id="selecoes">
+                    <span class="vc-feature-number">02</span>
+                    <span class="vc-feature-category">
+                        EQUIPES PARTICIPANTES
+                    </span>
+                    <h3>Seleções</h3>
+                    <p>
+                        Explore as seleções participantes, conheça
+                        seus países e consulte informações
+                        sobre suas equipes.
+                    </p>
+                    <span class="vc-feature-label">
+                        Explore as equipes
+                    </span>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-xl-3">
+                <article class="vc-feature-card vc-card-blue h-100"
+                         id="partidas">
+
+                    <span class="vc-feature-number">03</span>
+                    <span class="vc-feature-category">
+                        CALENDÁRIO ESPORTIVO
+                    </span>
+                    <h3>Partidas</h3>
+                    <p>
+                        Consulte os confrontos da competição,
+                        horários, estádios e informações
+                        sobre os jogos.
+                    </p>
+                    <span class="vc-feature-label">
+                        Acompanhe os jogos
+                    </span>
+                </article>
+            </div>
+
+            <div class="col-md-6 col-xl-3">
+                <article class="vc-feature-card h-100" id="ingressos">
+                    <span class="vc-feature-number">04</span>
+
+                    <span class="vc-feature-category">
+                        EXPERIÊNCIA DO TORCEDOR
+                    </span>
+                    <h3>Ingressos</h3>
+                    <p>
+                        Consulte informações sobre ingressos
+                        e experimente o processo de compra
+                        para os jogos da competição.
+                    </p>
+                    <span class="vc-feature-label">
+                        Comprar ingressos
+                    </span>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+<footer class="vc-footer">
+    <div class="container">
+        <div class="row g-4 vc-footer-content">
+            <!-- Identidade -->
+            <div class="col-lg-5">
+                <a href="#inicio" class="vc-footer-brand">
+                    <span class="vc-brand-symbol">VC</span>
+                    <span class="vc-brand-name">
+                        VirtualCup
+                        <small>BRASIL 2027</small>
+                    </span>
+                </a>
+                <p class="vc-footer-description">
+                    O Brasil é o palco. O mundo é o espetáculo.
+                    Explore a Copa do Mundo Feminina de 2027
+                    e conheça tudo sobre a competição.
+                </p>
+            </div>
+
+            <!-- Navegação -->
+            <div class="col-6 col-lg-3">
+
+                <h4 class="vc-footer-title">
+                    Navegação
+                </h4>
+                <ul class="vc-footer-links">
+
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#estadios">Estádios</a></li>
+                    <li><a href="#selecoes">Seleções</a></li>
+                    <li><a href="#partidas">Partidas</a></li>
+                </ul>
+            </div>
+
+            <!-- Acesso -->
+            <div class="col-6 col-lg-4">
+                <h4 class="vc-footer-title">
+                    Acesso
+                </h4>
+                <ul class="vc-footer-links">
+                    <li><a href="#ingressos">Ingressos</a></li>
+                    <li><a href="/login">Entrar</a></li>
+                    <li><a href="/usuarios/criar">Cadastre-se</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="vc-footer-bottom">
+            <p>
+                © 2026 VirtualCup. Todos os direitos reservados.
+            </p>
+            <p>
+                Projeto informativo e acadêmico.
+                Sem vínculo oficial com a FIFA.
+            </p>
+
+        </div>
+    </div>
+</footer>
 </body>
 </html>
