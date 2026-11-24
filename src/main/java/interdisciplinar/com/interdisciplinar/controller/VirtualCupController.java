@@ -23,6 +23,6 @@ public class VirtualCupController {
     // Página inicial do administrador
     @GetMapping("/admin/home")
     public String homeAdmin() {
-        return "admin/homeAdmin";
+        return "administrador/homeAdmin";
     }
 }

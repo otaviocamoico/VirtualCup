@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | VirtualCup</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/usuario.css}">
+
+</head>
+<body class="vc-register-page">
+    <main class="vc-register-layout">
+        <section class="vc-register-visual">
+            <div class="vc-register-visual-content">
+                <!-- Logo -->
+                <a th:href="@{/virtualcup}" class="vc-register-brand">
+                    <span class="vc-brand-symbol">VC</span>
+                    <span class="vc-brand-name">
+                        VirtualCup
+                        <small>BRASIL 2027</small>
+                    </span>
+                </a>
+
+                <!-- Apresentação -->
+                <div class="vc-register-message">
+                    <span class="vc-register-tag">
+                        FAÇA PARTE DESSA EXPERIÊNCIA
+                    </span>
+                    <h1>
+                        Sua paixão pelo futebol.
+                        <span>Uma experiência sem fronteiras.</span>
+                    </h1>
+                    <p>
+                        Crie sua conta no VirtualCup e explore
+                        os estádios, conheça as seleções e
+                        acompanhe a Copa do Mundo Feminina
+                        de 2027.
+                    </p>
+                </div>
+                <div class="vc-register-bottom">
+                    FUTEBOL, CULTURA E PAIXÃO SEM FRONTEIRAS.
+                </div>
+            </div>
+        </section>
+
+        <section class="vc-register-panel">
+            <div class="vc-register-card">
+                <!-- Voltar -->
+                <a th:href="@{/virtualcup}" class="vc-register-back">
+                    ← Voltar para o início
+                </a>
+                <!-- Cabeçalho -->
+                <div class="vc-register-heading">
+
+                    <span class="vc-register-section-tag">
+                        JUNTE-SE AO VIRTUALCUP
+                    </span>
+                    <h2>Crie sua conta</h2>
+                    <p>
+                        Preencha seus dados para começar.
+                    </p>
+                </div>
+                <!-- Mensagem de erro -->
+                <div class="alert alert-danger"
+                     role="alert"
+                     th:if="${erroCadastro != null}"
+                     th:text="${erroCadastro}">
+                </div>
+
+                <!-- Formulário -->
+                <form th:action="@{/usuarios/salvar}"
+                      th:object="${usuario}"
+                      method="post">
+
+                    <!-- Nome -->
+                    <div class="mb-3">
+                        <label for="nomeUsuario" class="form-label">
+                            Nome completo
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control vc-register-input"
+                            id="nomeUsuario"
+                            th:field="*{nomeUsuario}"
+                            placeholder="Digite seu nome completo"
+                            autocomplete="name"
+                            maxlength="40"
+                            required
+                        >
+                    </div>
+
+                    <!-- E-mail -->
+                    <div class="mb-3">
+                        <label for="emailUsuario" class="form-label">
+                            E-mail
+                        </label>
+                        <input
+                            type="email"
+                            class="form-control vc-register-input"
+                            id="emailUsuario"
+                            th:field="*{emailUsuario}"
+                            placeholder="Digite seu e-mail"
+                            autocomplete="email"
+                            maxlength="254"
+                            required
+                        >
+                    </div>
+
+                    <!-- Senha -->
+                    <div class="mb-3">
+                        <label for="senhaUsuario" class="form-label">
+                            Senha
+                        </label>
+                        <input
+                            type="password"
+                            class="form-control vc-register-input"
+                            id="senhaUsuario"
+                            th:field="*{senhaUsuario}"
+                            placeholder="Crie uma senha"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+                        <small class="vc-register-hint">
+                            A senha deve possuir pelo menos 8 caracteres.
+                        </small>
+                    </div>
+
+                    <!-- Confirmar senha -->
+                    <div class="mb-4">
+
+                        <label for="confirmarSenha" class="form-label">
+                            Confirmar senha
+                        </label>
+                        <input
+                            type="password"
+                            class="form-control vc-register-input"
+                            id="confirmarSenha"
+                            th:field="*{confirmarSenha}"
+                            placeholder="Digite novamente sua senha"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required
+                        >
+                    </div>
+
+                    <!-- Botão -->
+                    <button type="submit"
+                            class="btn btn-vc-primary vc-register-submit">
+                        Criar minha conta
+                    </button>
+                </form>
+
+                <!-- Link para login -->
+                <div class="vc-register-login">
+                    <p>
+                        Já possui uma conta?
+                        <a th:href="@{/login}">
+                            Faça login
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

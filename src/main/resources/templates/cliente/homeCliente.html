@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Área do Usuário | VirtualCup</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+    <main class="container py-5">
+
+        <div class="card shadow-sm p-4">
+
+            <h1 class="mb-3">Bem-vindo ao VirtualCup!</h1>
+
+            <p>
+                Você está na área do usuário comum.
+            </p>
+
+            <p>
+                Explore a Copa do Mundo Feminina de 2027,
+                conheça os estádios e acompanhe as seleções.
+            </p>
+
+            <div class="d-flex gap-2">
+
+                <a th:href="@{/virtualcup}"
+                   class="btn btn-vc-primary">
+                    Página inicial
+                </a>
+
+                <form th:action="@{/logout}" method="post">
+
+                    <button type="submit" class="btn btn-outline-danger">
+                        Sair
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

@@ -20,9 +20,13 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         return List.of(
-            new SimpleGrantedAuthority(usuario.getPapel())
+            new SimpleGrantedAuthority(
+                "ROLE_" + usuario.getRole().name()
+            )
         );
+
     }
 
     @Override

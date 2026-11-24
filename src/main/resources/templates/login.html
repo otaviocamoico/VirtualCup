@@ -72,19 +72,22 @@
                 <div class="alert alert-danger"
                      role="alert"
                      th:if="${param.erro != null}">
-
                     E-mail ou senha incorretos.
                     Verifique seus dados e tente novamente.
+                </div>
 
+                <div class="alert alert-success"
+                role="alert"
+                th:if="${param.cadastro != null}">
+                Cadastro realizado com sucesso!
+                Agora você pode acessar sua conta.
                 </div>
 
                 <!-- Mensagem de logout -->
                 <div class="alert alert-success"
                      role="alert"
                      th:if="${param.logout != null}">
-
                     Você saiu do sistema com sucesso.
-
                 </div>
 
                 <!-- Formulário de login -->
@@ -101,8 +104,7 @@
                             name="email"
                             placeholder="Digite seu e-mail"
                             autocomplete="username"
-                            required
-                        >
+                            required>
                     </div>
 
                     <!-- Senha -->
