@@ -1,0 +1,605 @@
+
+/* ========================================
+   PAINEL ADMINISTRATIVO - VIRTUALCUP
+   ======================================== */
+
+   .vc-admin-page {
+    min-height: 100vh;
+    background-color: #F3F6F2;
+}
+
+
+/* ========================================
+   ESTRUTURA PRINCIPAL
+   ======================================== */
+
+.vc-admin-layout {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+}
+
+
+/* ========================================
+   MENU LATERAL
+   ======================================== */
+
+.vc-admin-sidebar {
+
+    position: sticky;
+    top: 0;
+
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 28px 20px;
+
+    background-color: var(--vc-green-dark);
+    color: #FFFFFF;
+}
+
+
+/* Marca */
+
+.vc-admin-brand {
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 0 5px 27px;
+
+    color: #FFFFFF;
+    text-decoration: none;
+
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.vc-admin-brand:hover {
+    color: #FFFFFF;
+}
+
+.vc-admin-symbol {
+
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid var(--vc-yellow);
+    border-radius: 9px;
+
+    color: var(--vc-yellow);
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.vc-admin-brand-name {
+
+    display: flex;
+    flex-direction: column;
+
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.vc-admin-brand-name small {
+
+    color: var(--vc-yellow);
+
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    margin-top: 5px;
+}
+
+
+/* Perfil */
+
+.vc-admin-profile {
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 25px 5px;
+}
+
+.vc-admin-avatar {
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background-color: var(--vc-yellow);
+    color: var(--vc-green-dark);
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.vc-admin-profile div {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.vc-admin-profile strong {
+    font-size: 13px;
+}
+
+.vc-admin-profile small {
+
+    margin-top: 3px;
+
+    color: rgba(255,255,255,0.65);
+    font-size: 11px;
+}
+
+
+/* Navegação */
+
+.vc-admin-nav {
+
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.vc-admin-nav-title {
+
+    color: rgba(255,255,255,0.5);
+
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.3px;
+
+    margin: 15px 0 8px 8px;
+}
+
+.vc-admin-nav-link,
+.vc-admin-nav-disabled {
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px;
+
+    border-radius: 7px;
+
+    color: rgba(255,255,255,0.8);
+
+    text-decoration: none;
+    font-size: 13px;
+
+    transition: 0.3s;
+}
+
+.vc-admin-nav-link:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--vc-yellow);
+}
+
+.vc-admin-nav-link.active {
+
+    background-color: rgba(245,206,54,0.13);
+
+    color: var(--vc-yellow);
+    font-weight: bold;
+}
+
+.vc-admin-nav-link span,
+.vc-admin-nav-disabled span {
+
+    width: 19px;
+    text-align: center;
+
+    font-size: 17px;
+}
+
+.vc-admin-nav-disabled {
+    cursor: default;
+    opacity: 0.55;
+}
+
+.vc-admin-nav-disabled small {
+
+    margin-left: auto;
+
+    font-size: 9px;
+    color: var(--vc-yellow);
+}
+
+
+/* Parte inferior */
+
+.vc-admin-sidebar-bottom {
+
+    margin-top: auto;
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.vc-admin-home-link,
+.vc-admin-logout {
+
+    display: block;
+    width: 100%;
+
+    padding: 11px 10px;
+
+    background: transparent;
+    border: none;
+
+    color: rgba(255,255,255,0.75);
+
+    text-align: left;
+    text-decoration: none;
+
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.vc-admin-home-link:hover,
+.vc-admin-logout:hover {
+    color: var(--vc-yellow);
+}
+
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+   ======================================== */
+
+.vc-admin-main {
+    min-width: 0;
+    padding: 40px 45px;
+}
+
+
+/* Cabeçalho */
+
+.vc-admin-topbar {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 35px;
+}
+
+.vc-admin-eyebrow {
+
+    color: var(--vc-green);
+
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.vc-admin-topbar h1 {
+
+    margin-top: 8px;
+
+    color: var(--vc-green-dark);
+
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.vc-admin-role {
+
+    padding: 8px 15px;
+
+    background-color: rgba(8,116,67,0.1);
+    border-radius: 5px;
+
+    color: var(--vc-green);
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+
+/* ========================================
+   BOAS-VINDAS
+   ======================================== */
+
+.vc-admin-welcome {
+
+    min-height: 205px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 35px 40px;
+
+    margin-bottom: 45px;
+
+    background: linear-gradient(
+        110deg,
+        #123B2B,
+        #087443
+    );
+
+    border-radius: 12px;
+
+    color: #FFFFFF;
+}
+
+.vc-admin-welcome-tag {
+
+    color: var(--vc-yellow);
+
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.7px;
+}
+
+.vc-admin-welcome h2 {
+
+    margin: 15px 0 12px;
+
+    color: #FFFFFF;
+
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.vc-admin-welcome p {
+
+    max-width: 480px;
+    margin: 0;
+
+    color: rgba(255,255,255,0.8);
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.vc-admin-welcome-symbol {
+
+    color: rgba(245,206,54,0.22);
+
+    font-size: 100px;
+    font-weight: 900;
+}
+
+
+/* ========================================
+   CARDS
+   ======================================== */
+
+.vc-admin-section-heading {
+    margin-bottom: 25px;
+}
+
+.vc-admin-section-heading h2 {
+
+    color: var(--vc-green-dark);
+
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.vc-admin-section-heading p {
+
+    margin-top: 6px;
+
+    color: var(--vc-muted);
+    font-size: 13px;
+}
+
+
+.vc-admin-card {
+
+    min-height: 255px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 25px 22px;
+
+    background-color: #FFFFFF;
+
+    border: 1px solid rgba(18,59,43,0.08);
+    border-top: 4px solid var(--vc-green);
+
+    border-radius: 9px;
+
+    color: inherit;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.vc-admin-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(18,59,43,0.09);
+}
+
+.vc-admin-card-icon {
+
+    color: var(--vc-green);
+
+    font-size: 29px;
+    font-weight: bold;
+
+    margin-bottom: 15px;
+}
+
+.vc-admin-card-status {
+
+    width: fit-content;
+
+    padding: 5px 8px;
+
+    border-radius: 4px;
+
+    background-color: rgba(8,116,67,0.1);
+
+    color: var(--vc-green);
+
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 0.8px;
+}
+
+.vc-admin-card-status.pending {
+
+    background-color: #F2F2E9;
+    color: #77765C;
+}
+
+.vc-admin-card h3 {
+
+    margin: 14px 0 10px;
+
+    color: var(--vc-green-dark);
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.vc-admin-card p {
+
+    color: var(--vc-muted);
+
+    font-size: 12px;
+    line-height: 1.7;
+
+    margin-bottom: 20px;
+}
+
+.vc-admin-card-action {
+
+    margin-top: auto;
+
+    color: var(--vc-green);
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* ========================================
+   RODAPÉ
+   ======================================== */
+
+.vc-admin-footer {
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 55px;
+    padding-top: 20px;
+
+    border-top: 1px solid #DDE5DE;
+}
+
+.vc-admin-footer p {
+
+    margin: 0;
+
+    color: var(--vc-muted);
+    font-size: 11px;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+@media (max-width: 992px) {
+
+    .vc-admin-layout {
+        grid-template-columns: 220px minmax(0, 1fr);
+    }
+
+    .vc-admin-main {
+        padding: 30px 25px;
+    }
+
+    .vc-admin-sidebar {
+        padding: 25px 15px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .vc-admin-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .vc-admin-sidebar {
+
+        position: relative;
+        height: auto;
+
+        padding: 22px;
+    }
+
+    .vc-admin-nav {
+        margin-top: 10px;
+    }
+
+    .vc-admin-sidebar-bottom {
+        margin-top: 20px;
+    }
+
+    .vc-admin-main {
+        padding: 30px 20px;
+    }
+
+    .vc-admin-welcome {
+        padding: 28px;
+    }
+
+    .vc-admin-welcome-symbol {
+        font-size: 65px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .vc-admin-topbar {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .vc-admin-topbar h1 {
+        font-size: 22px;
+    }
+
+    .vc-admin-welcome-symbol {
+        display: none;
+    }
+
+    .vc-admin-welcome h2 {
+        font-size: 25px;
+    }
+
+    .vc-admin-footer {
+        flex-direction: column;
+    }
+
+}
