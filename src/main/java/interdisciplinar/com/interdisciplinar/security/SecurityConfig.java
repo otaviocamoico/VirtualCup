@@ -41,9 +41,12 @@ public class SecurityConfig {
                     "/usuarios/salvar"
                 ).permitAll()
 
-                // Listagem de usuários somente para administradores
-                .requestMatchers("/usuarios/listar")
-                .hasRole("ADMIN")
+                // Gerenciamento de usuários somente para administradores
+                .requestMatchers(
+                    "/usuarios/listar",
+                    "/usuarios/*/promover",
+                    "/usuarios/*/rebaixar"
+                ).hasRole("ADMIN")
 
                 // Área administrativa
                 .requestMatchers(

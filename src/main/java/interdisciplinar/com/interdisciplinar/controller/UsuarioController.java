@@ -1,17 +1,20 @@
 package interdisciplinar.com.interdisciplinar.controller;
 
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import interdisciplinar.com.interdisciplinar.entity.Usuario;
+import interdisciplinar.com.interdisciplinar.enums.Role;
 import interdisciplinar.com.interdisciplinar.service.UsuarioService;
 
 @Controller
@@ -34,51 +37,25 @@ public class UsuarioController {
         if (usuario.getNomeUsuario() == null ||
                 usuario.getNomeUsuario().isBlank()) {
 
-            model.addAttribute(
-                "erroCadastro",
-                "Informe seu nome."
-            );
+            model.addAttribute("erroCadastro", "Informe seu nome.");
 
             return "usuario/formularioUsuario";
         }
 
         usuario.setNomeUsuario(usuario.getNomeUsuario().trim());
 
-        if (usuario.getNomeUsuario().length() > 40) {
-
-            model.addAttribute(
-                "erroCadastro",
-                "O nome deve possuir no máximo 40 caracteres."
-            );
-
-            return "usuario/formularioUsuario";
-        }
-
         // Validar e-mail
         if (usuario.getEmailUsuario() == null ||
                 usuario.getEmailUsuario().isBlank()) {
 
-            model.addAttribute(
-                "erroCadastro",
-                "Informe seu e-mail."
-            );
+            model.addAttribute("erroCadastro", "Informe seu e-mail.");
 
             return "usuario/formularioUsuario";
         }
 
         usuario.setEmailUsuario(
-            usuario.getEmailUsuario().trim().toLowerCase(Locale.ROOT)
+            usuario.getEmailUsuario().trim()
         );
-
-        if (usuario.getEmailUsuario().length() > 254) {
-
-            model.addAttribute(
-                "erroCadastro",
-                "O e-mail deve possuir no máximo 254 caracteres."
-            );
-
-            return "usuario/formularioUsuario";
-        }
 
         // Validar senha
         if (usuario.getSenhaUsuario() == null ||
@@ -93,8 +70,9 @@ public class UsuarioController {
         }
 
         // Confirmar senha
-        if (!usuario.getSenhaUsuario().equals(
-                usuario.getConfirmarSenha())) {
+        if (usuario.getConfirmarSenha() == null ||
+                !usuario.getSenhaUsuario().equals(
+                    usuario.getConfirmarSenha())) {
 
             model.addAttribute(
                 "erroCadastro",
@@ -112,10 +90,7 @@ public class UsuarioController {
 
         } catch (IllegalArgumentException e) {
 
-            model.addAttribute(
-                "erroCadastro",
-                e.getMessage()
-            );
+            model.addAttribute("erroCadastro", e.getMessage());
 
             return "usuario/formularioUsuario";
 
@@ -123,8 +98,7 @@ public class UsuarioController {
 
             model.addAttribute(
                 "erroCadastro",
-                "Não foi possível concluir o cadastro. "
-                + "Verifique se o e-mail já está cadastrado."
+                "Este e-mail já está cadastrado."
             );
 
             return "usuario/formularioUsuario";
@@ -133,13 +107,82 @@ public class UsuarioController {
 
     // Listar usuários
     @GetMapping("/listar")
-    public String listar(Model model) {
+    public String listar(
+            Model model,
+            Authentication authentication) {
 
         List<Usuario> usuarios = usuarioService.findAll();
 
         model.addAttribute("usuarios", usuarios);
 
-        return "usuario/ListarUsuarios";
+        model.addAttribute(
+            "emailAdministradorAtual",
+            authentication.getName()
+        );
+
+        return "usuario/listarUsuarios";
+    }
+
+    // Promover usuário para administrador
+    @PostMapping("/{id}/promover")
+    public String promover(
+            @PathVariable Integer id,
+            Authentication authentication,
+            RedirectAttributes redirectAttributes) {
+
+        try {
+
+            usuarioService.alterarPerfil(
+                id,
+                Role.ADMIN,
+                authentication.getName()
+            );
+
+            redirectAttributes.addFlashAttribute(
+                "mensagem",
+                "Usuário promovido para administrador com sucesso."
+            );
+
+        } catch (IllegalArgumentException e) {
+
+            redirectAttributes.addFlashAttribute(
+                "erro",
+                e.getMessage()
+            );
+        }
+
+        return "redirect:/usuarios/listar";
+    }
+
+    // Rebaixar administrador para usuário comum
+    @PostMapping("/{id}/rebaixar")
+    public String rebaixar(
+            @PathVariable Integer id,
+            Authentication authentication,
+            RedirectAttributes redirectAttributes) {
+
+        try {
+
+            usuarioService.alterarPerfil(
+                id,
+                Role.USER,
+                authentication.getName()
+            );
+
+            redirectAttributes.addFlashAttribute(
+                "mensagem",
+                "Administrador rebaixado para usuário comum com sucesso."
+            );
+
+        } catch (IllegalArgumentException e) {
+
+            redirectAttributes.addFlashAttribute(
+                "erro",
+                e.getMessage()
+            );
+        }
+
+        return "redirect:/usuarios/listar";
     }
 
     // Exibir formulário de cadastro

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 
@@ -7,45 +8,295 @@
 
     <title>Área do Usuário | VirtualCup</title>
 
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css"
           rel="stylesheet">
 
+    <!-- CSS global -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <!-- CSS da área do cliente -->
+    <link rel="stylesheet" th:href="@{/css/cliente.css}">
 </head>
 
-<body>
+<body class="vc-client-page">
 
-    <main class="container py-5">
+    <!-- CABEÇALHO -->
+    <header class="vc-client-header">
 
-        <div class="card shadow-sm p-4">
+        <div class="vc-client-header-container">
 
-            <h1 class="mb-3">Bem-vindo ao VirtualCup!</h1>
+            <!-- Marca -->
+            <a th:href="@{/virtualcup}" class="vc-client-brand">
 
-            <p>
-                Você está na área do usuário comum.
-            </p>
+                <span class="vc-client-symbol">
+                    VC
+                </span>
 
-            <p>
-                Explore a Copa do Mundo Feminina de 2027,
-                conheça os estádios e acompanhe as seleções.
-            </p>
+                <span class="vc-client-brand-name">
+                    VirtualCup
+                    <small>BRASIL 2027</small>
+                </span>
 
-            <div class="d-flex gap-2">
+            </a>
 
-                <a th:href="@{/virtualcup}"
-                   class="btn btn-vc-primary">
+            <!-- Navegação -->
+            <nav class="vc-client-nav">
+
+                <a th:href="@{/virtualcup}" class="vc-client-nav-link">
                     Página inicial
                 </a>
 
+                <a href="#recursos" class="vc-client-nav-link">
+                    Explorar
+                </a>
+
+            </nav>
+
+            <!-- Conta -->
+            <div class="vc-client-account">
+
+                <span class="vc-client-account-label">
+                    ÁREA DO USUÁRIO
+                </span>
+
                 <form th:action="@{/logout}" method="post">
 
-                    <button type="submit" class="btn btn-outline-danger">
+                    <button type="submit" class="vc-client-logout">
                         Sair
                     </button>
 
                 </form>
 
             </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="vc-client-main">
+
+        <div class="container">
+
+            <!-- BOAS-VINDAS -->
+            <section class="vc-client-welcome">
+
+                <div class="vc-client-welcome-content">
+
+                    <span class="vc-client-welcome-tag">
+                        SEJA BEM-VINDO AO VIRTUALCUP
+                    </span>
+
+                    <h1>
+                        Olá,
+                        <span th:text="${nomeUsuario != null ? nomeUsuario : 'torcedor(a)'}">
+                            Usuário
+                        </span>!
+                    </h1>
+
+                    <p>
+                        Acompanhe a Copa do Mundo Feminina de 2027,
+                        explore os estádios brasileiros e fique por
+                        dentro das seleções e partidas do torneio.
+                    </p>
+
+                    <a href="#recursos" class="vc-client-welcome-button">
+                        Explorar plataforma
+                        <span>→</span>
+                    </a>
+
+                </div>
+
+                <div class="vc-client-welcome-symbol">
+                    VC
+                </div>
+
+            </section>
+
+
+            <!-- TÍTULO DA SEÇÃO -->
+            <section id="recursos" class="vc-client-section">
+
+                <div class="vc-client-section-heading">
+
+                    <div>
+
+                        <span class="vc-client-section-tag">
+                            SUA EXPERIÊNCIA
+                        </span>
+
+                        <h2>Explore o VirtualCup</h2>
+
+                        <p>
+                            Escolha uma das áreas da plataforma
+                            para conhecer os recursos disponíveis.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARDS -->
+                <div class="vc-client-cards">
+
+                    <!-- ESTÁDIOS -->
+                    <article class="vc-client-card">
+
+                        <div class="vc-client-card-top">
+
+                            <span class="vc-client-card-icon">
+                                ▥
+                            </span>
+
+                            <span class="vc-client-card-status">
+                                EM BREVE
+                            </span>
+
+                        </div>
+
+                        <h3>Estádios</h3>
+
+                        <p>
+                            Conheça os estádios brasileiros que
+                            receberão as partidas da competição.
+                        </p>
+
+                        <div class="vc-client-card-footer">
+                            <span>Conheça as arenas</span>
+                            <span class="vc-client-card-arrow">→</span>
+                        </div>
+
+                    </article>
+
+
+                    <!-- SELEÇÕES -->
+                    <article class="vc-client-card">
+
+                        <div class="vc-client-card-top">
+
+                            <span class="vc-client-card-icon">
+                                ⚑
+                            </span>
+
+                            <span class="vc-client-card-status">
+                                EM BREVE
+                            </span>
+
+                        </div>
+
+                        <h3>Seleções</h3>
+
+                        <p>
+                            Consulte informações sobre as seleções
+                            participantes e suas equipes.
+                        </p>
+
+                        <div class="vc-client-card-footer">
+                            <span>Explore as seleções</span>
+                            <span class="vc-client-card-arrow">→</span>
+                        </div>
+
+                    </article>
+
+
+                    <!-- PARTIDAS -->
+                    <article class="vc-client-card">
+
+                        <div class="vc-client-card-top">
+
+                            <span class="vc-client-card-icon">
+                                ◷
+                            </span>
+
+                            <span class="vc-client-card-status">
+                                EM BREVE
+                            </span>
+
+                        </div>
+
+                        <h3>Partidas</h3>
+
+                        <p>
+                            Acompanhe a programação e consulte
+                            os detalhes dos confrontos.
+                        </p>
+
+                        <div class="vc-client-card-footer">
+                            <span>Veja os confrontos</span>
+                            <span class="vc-client-card-arrow">→</span>
+                        </div>
+
+                    </article>
+
+
+                    <!-- INGRESSOS -->
+                    <article class="vc-client-card">
+
+                        <div class="vc-client-card-top">
+
+                            <span class="vc-client-card-icon">
+                                ▤
+                            </span>
+
+                            <span class="vc-client-card-status">
+                                EM BREVE
+                            </span>
+
+                        </div>
+
+                        <h3>Ingressos</h3>
+
+                        <p>
+                            Simule a compra de ingressos para
+                            acompanhar os jogos da competição.
+                        </p>
+
+                        <div class="vc-client-card-footer">
+                            <span>Explore os ingressos</span>
+                            <span class="vc-client-card-arrow">→</span>
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- INFORMAÇÃO INFERIOR -->
+            <section class="vc-client-info">
+
+                <div class="vc-client-info-symbol">
+                    ★
+                </div>
+
+                <div>
+                    <h3>O Brasil é o palco. O mundo é o espetáculo.</h3>
+
+                    <p>
+                        Prepare-se para acompanhar uma das maiores
+                        competições do futebol feminino mundial.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- RODAPÉ -->
+            <footer class="vc-client-footer">
+
+                <p>
+                    VirtualCup — Copa do Mundo Feminina de 2027.
+                </p>
+
+                <a th:href="@{/virtualcup}">
+                    Voltar à página inicial
+                </a>
+
+            </footer>
 
         </div>
 

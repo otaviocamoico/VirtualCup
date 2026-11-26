@@ -1,0 +1,549 @@
+
+/* ========================================
+   ÁREA DO USUÁRIO - VIRTUALCUP
+   ======================================== */
+
+.vc-client-page {
+    min-height: 100vh;
+    background-color: #F3F6F2;
+    color: var(--vc-text);
+}
+
+
+/* ========================================
+   CABEÇALHO
+   ======================================== */
+
+.vc-client-header {
+    width: 100%;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E5EBE5;
+}
+
+.vc-client-header-container {
+    max-width: 1320px;
+    min-height: 85px;
+    margin: 0 auto;
+    padding: 15px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+
+/* Marca */
+
+.vc-client-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--vc-green-dark);
+    text-decoration: none;
+}
+
+.vc-client-brand:hover {
+    color: var(--vc-green-dark);
+}
+
+.vc-client-symbol {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid var(--vc-green);
+    border-radius: 9px;
+
+    color: var(--vc-green);
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.vc-client-brand-name {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.vc-client-brand-name small {
+    margin-top: 5px;
+
+    color: var(--vc-green);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+
+/* Navegação */
+
+.vc-client-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.vc-client-nav-link {
+    color: #536158;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.vc-client-nav-link:hover {
+    color: var(--vc-green);
+}
+
+
+/* Conta */
+
+.vc-client-account {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.vc-client-account-label {
+    color: var(--vc-muted);
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.vc-client-account form {
+    margin: 0;
+}
+
+.vc-client-logout {
+    padding: 9px 17px;
+
+    border: 1px solid #E1E7E1;
+    border-radius: 5px;
+
+    background-color: #FFFFFF;
+    color: #65736B;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.vc-client-logout:hover {
+    border-color: #B84A4A;
+    background-color: #FFF5F5;
+    color: #B84A4A;
+}
+
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+   ======================================== */
+
+.vc-client-main {
+    padding: 45px 0 30px;
+}
+
+
+/* ========================================
+   BOAS-VINDAS
+   ======================================== */
+
+.vc-client-welcome {
+    min-height: 270px;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 42px 48px;
+    margin-bottom: 55px;
+
+    border-radius: 13px;
+
+    background: linear-gradient(
+        110deg,
+        #123B2B,
+        #087443
+    );
+
+    color: #FFFFFF;
+}
+
+.vc-client-welcome-content {
+    max-width: 680px;
+    position: relative;
+    z-index: 1;
+}
+
+.vc-client-welcome-tag {
+    color: var(--vc-yellow);
+
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.8px;
+}
+
+.vc-client-welcome h1 {
+    margin: 17px 0 12px;
+
+    color: #FFFFFF;
+    font-size: 35px;
+    font-weight: 800;
+}
+
+.vc-client-welcome h1 span {
+    color: var(--vc-yellow);
+}
+
+.vc-client-welcome p {
+    max-width: 590px;
+    margin-bottom: 24px;
+
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.vc-client-welcome-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 19px;
+
+    border-radius: 5px;
+
+    background-color: var(--vc-yellow);
+    color: var(--vc-green-dark);
+
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.vc-client-welcome-button:hover {
+    background-color: #FFE16B;
+    color: var(--vc-green-dark);
+    transform: translateY(-2px);
+}
+
+.vc-client-welcome-button span {
+    font-size: 17px;
+}
+
+.vc-client-welcome-symbol {
+    color: rgba(245,206,54,0.16);
+
+    font-size: 135px;
+    font-weight: 900;
+}
+
+
+/* ========================================
+   SEÇÃO DE RECURSOS
+   ======================================== */
+
+.vc-client-section {
+    margin-bottom: 55px;
+}
+
+.vc-client-section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    margin-bottom: 27px;
+}
+
+.vc-client-section-tag {
+    color: var(--vc-green);
+
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.vc-client-section-heading h2 {
+    margin: 8px 0;
+
+    color: var(--vc-green-dark);
+
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.vc-client-section-heading p {
+    margin: 0;
+
+    color: var(--vc-muted);
+    font-size: 13px;
+}
+
+
+/* ========================================
+   CARDS
+   ======================================== */
+
+.vc-client-cards {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.vc-client-card {
+    min-height: 260px;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 23px 21px;
+
+    background-color: #FFFFFF;
+
+    border: 1px solid rgba(18,59,43,0.08);
+    border-top: 4px solid var(--vc-green);
+    border-radius: 9px;
+
+    transition: 0.25s;
+}
+
+.vc-client-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 10px 25px rgba(18,59,43,0.07);
+}
+
+.vc-client-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.vc-client-card-icon {
+    color: var(--vc-green);
+
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.vc-client-card-status {
+    padding: 5px 8px;
+
+    border-radius: 4px;
+
+    background-color: #F2F2E9;
+    color: #77765C;
+
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 0.7px;
+}
+
+.vc-client-card h3 {
+    margin-bottom: 10px;
+
+    color: var(--vc-green-dark);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.vc-client-card p {
+    margin-bottom: 20px;
+
+    color: var(--vc-muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.vc-client-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: auto;
+    padding-top: 15px;
+
+    border-top: 1px solid #EDF0ED;
+
+    color: var(--vc-green);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.vc-client-card-arrow {
+    font-size: 17px;
+}
+
+
+/* ========================================
+   INFORMAÇÃO INFERIOR
+   ======================================== */
+
+.vc-client-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 25px 30px;
+    margin-bottom: 40px;
+
+    border: 1px solid rgba(8,116,67,0.12);
+    border-radius: 9px;
+
+    background-color: #EAF2EB;
+}
+
+.vc-client-info-symbol {
+    color: var(--vc-green);
+    font-size: 30px;
+}
+
+.vc-client-info h3 {
+    margin-bottom: 7px;
+
+    color: var(--vc-green-dark);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.vc-client-info p {
+    margin: 0;
+
+    color: var(--vc-muted);
+    font-size: 12px;
+}
+
+
+/* ========================================
+   RODAPÉ
+   ======================================== */
+
+.vc-client-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 22px 0;
+
+    border-top: 1px solid #DDE5DE;
+}
+
+.vc-client-footer p {
+    margin: 0;
+
+    color: var(--vc-muted);
+    font-size: 11px;
+}
+
+.vc-client-footer a {
+    color: var(--vc-green);
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.vc-client-footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+   ======================================== */
+
+@media (max-width: 1100px) {
+
+    .vc-client-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .vc-client-header-container {
+        flex-wrap: wrap;
+        padding: 15px 20px;
+    }
+
+    .vc-client-nav {
+        order: 3;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .vc-client-account-label {
+        display: none;
+    }
+
+    .vc-client-welcome {
+        padding: 32px;
+    }
+
+    .vc-client-welcome h1 {
+        font-size: 29px;
+    }
+
+    .vc-client-welcome-symbol {
+        font-size: 85px;
+    }
+
+    .vc-client-main {
+        padding-top: 30px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .vc-client-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .vc-client-welcome {
+        padding: 27px 23px;
+    }
+
+    .vc-client-welcome-symbol {
+        display: none;
+    }
+
+    .vc-client-welcome h1 {
+        font-size: 25px;
+    }
+
+    .vc-client-section-heading h2 {
+        font-size: 22px;
+    }
+
+    .vc-client-info {
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .vc-client-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}

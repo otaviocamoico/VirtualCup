@@ -1,0 +1,300 @@
+
+/* ========================================
+   GERENCIAMENTO DE USUÁRIOS - VIRTUALCUP
+   ======================================== */
+
+
+/* Cabeçalho */
+
+.vc-users-heading {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.vc-users-heading h2 {
+
+    color: var(--vc-green-dark);
+
+    font-size: 24px;
+    font-weight: 800;
+
+    margin-bottom: 9px;
+}
+
+.vc-users-heading p {
+
+    color: var(--vc-muted);
+    font-size: 13px;
+}
+
+
+/* Total de usuários */
+
+.vc-users-total {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-width: 125px;
+
+    padding: 14px 20px;
+
+    background-color: #FFFFFF;
+
+    border: 1px solid #DDE5DE;
+    border-radius: 8px;
+}
+
+.vc-users-total span {
+
+    color: var(--vc-green);
+
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.vc-users-total small {
+
+    color: var(--vc-muted);
+    font-size: 10px;
+}
+
+
+/* Container da tabela */
+
+.vc-users-table-container {
+
+    overflow: hidden;
+
+    background-color: #FFFFFF;
+
+    border: 1px solid #E2E8E2;
+    border-radius: 10px;
+
+    box-shadow: 0 4px 15px rgba(18,59,43,0.04);
+}
+
+
+/* Cabeçalho da tabela */
+
+.vc-users-table-heading {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 22px 25px;
+
+    border-bottom: 1px solid #E8EEE8;
+}
+
+.vc-users-table-heading h3 {
+
+    color: var(--vc-green-dark);
+
+    font-size: 16px;
+    font-weight: bold;
+
+    margin: 0;
+}
+
+.vc-users-table-heading span {
+
+    color: var(--vc-muted);
+    font-size: 11px;
+}
+
+
+/* Tabela */
+
+.vc-users-table {
+
+    margin-bottom: 0;
+
+    vertical-align: middle;
+}
+
+.vc-users-table thead th {
+
+    padding: 16px;
+
+    background-color: #F5F8F4;
+
+    color: var(--vc-green-dark);
+
+    font-size: 11px;
+    font-weight: bold;
+    white-space: nowrap;
+
+    border-bottom: 1px solid #E0E8E0;
+}
+
+.vc-users-table tbody td {
+
+    padding: 17px 16px;
+
+    color: #59665E;
+
+    font-size: 12px;
+    white-space: nowrap;
+
+    border-bottom: 1px solid #EEF1ED;
+}
+
+.vc-users-table tbody tr:hover {
+    background-color: #F9FBF8;
+}
+
+.vc-users-name {
+
+    color: var(--vc-green-dark) !important;
+    font-weight: bold;
+}
+
+.vc-users-date {
+    font-size: 11px !important;
+}
+
+
+/* Perfis */
+
+.vc-role-badge {
+
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.vc-role-admin {
+
+    background-color: rgba(8,116,67,0.12);
+    color: var(--vc-green);
+}
+
+.vc-role-user {
+
+    background-color: #EDF0ED;
+    color: #66736A;
+}
+
+
+/* Botões de ação */
+
+.vc-user-action {
+
+    padding: 7px 12px;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.vc-user-action.promote {
+
+    background-color: rgba(8,116,67,0.12);
+    color: var(--vc-green);
+}
+
+.vc-user-action.promote:hover {
+
+    background-color: var(--vc-green);
+    color: #FFFFFF;
+}
+
+.vc-user-action.demote {
+
+    background-color: #FFF0EA;
+    color: #B44B2D;
+}
+
+.vc-user-action.demote:hover {
+
+    background-color: #B44B2D;
+    color: #FFFFFF;
+}
+
+
+/* Conta do administrador atual */
+
+.vc-user-own-account {
+
+    display: inline-block;
+
+    padding: 7px 10px;
+
+    background-color: #F1F3EF;
+
+    border-radius: 5px;
+
+    color: var(--vc-muted);
+    font-size: 10px;
+    font-weight: bold;
+}
+
+
+/* Tabela vazia */
+
+.vc-users-empty {
+
+    padding: 45px !important;
+
+    color: var(--vc-muted) !important;
+    text-align: center;
+
+}
+
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+
+    .vc-users-heading {
+
+        align-items: flex-start;
+        flex-direction: column;
+
+    }
+
+    .vc-users-total {
+
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .vc-users-table-heading {
+
+        align-items: flex-start;
+        flex-direction: column;
+
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .vc-users-heading h2 {
+        font-size: 21px;
+    }
+
+}
