@@ -29,7 +29,7 @@ public class Estadio {
     @Column(nullable = false, length = 100)
     private String cidadeEstadio;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private Integer capacidadeEstadio;
 
     

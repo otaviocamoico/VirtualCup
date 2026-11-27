@@ -1,112 +1,121 @@
+
 package interdisciplinar.com.interdisciplinar.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(
-            HttpSecurity http) throws Exception {
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http
-            .authorizeHttpRequests(auth -> auth
+        http.authorizeHttpRequests(auth -> auth
 
-                // Páginas públicas GET
-                .requestMatchers(
-                    HttpMethod.GET,
-                    "/",
-                    "/login",
-                    "/usuarios/criar",
-                    "/css/**",
-                    "/js/**",
-                    "/img/**",
-                    "/copas/**",
-                    "/estadios/**",
-                    "/partidas/**",
-                    "/virtualcup"
-                ).permitAll()
+            // Páginas e recursos públicos
+            .requestMatchers(
+                HttpMethod.GET,
+                "/",
+                "/login",
+                "/usuarios/criar",
+                "/css/**",
+                "/js/**",
+                "/img/**",
+                "/copas/**",
+                "/partidas/**",
+                "/virtualcup"
+            ).permitAll()
 
-                // Cadastro público POST
-                .requestMatchers(
-                    HttpMethod.POST,
-                    "/usuarios/salvar"
-                ).permitAll()
+            // Cadastro público de usuários
+            .requestMatchers(
+                HttpMethod.POST,
+                "/usuarios/salvar"
+            ).permitAll()
 
-                // Gerenciamento de usuários somente para administradores
-                .requestMatchers(
-                    "/usuarios/listar",
-                    "/usuarios/*/promover",
-                    "/usuarios/*/rebaixar"
-                ).hasRole("ADMIN")
+            // Gerenciamento de usuários: somente ADMIN
+            .requestMatchers(
+                "/usuarios/listar",
+                "/usuarios/*/promover",
+                "/usuarios/*/rebaixar"
+            ).hasRole("ADMIN")
 
-                // Área administrativa
-                .requestMatchers(
-                    "/admin/**",
-                    "/virtualcup/admin/**"
-                ).hasRole("ADMIN")
+            // Gerenciamento de estádios: somente ADMIN
+            .requestMatchers(
+                "/estadios/**"
+            ).hasRole("ADMIN")
 
-                // Área do usuário comum
-                .requestMatchers("/virtualcup/cliente/**")
-                .hasRole("USER")
+            // Demais áreas administrativas
+            .requestMatchers(
+                "/admin/**",
+                "/virtualcup/admin/**"
+            ).hasRole("ADMIN")
 
-                // Compras e perfil exigem autenticação
-                .requestMatchers("/compras/**", "/perfil/**")
-                .authenticated()
+            // Área do usuário comum
+            .requestMatchers(
+                "/virtualcup/cliente/**"
+            ).hasRole("USER")
 
-                // Demais requisições exigem autenticação
-                .anyRequest().authenticated()
-            )
+            // Funcionalidades que exigem autenticação
+            .requestMatchers(
+                "/compras/**",
+                "/perfil/**"
+            ).authenticated()
 
-            .formLogin(form -> form
-                .loginPage("/login")
-                .usernameParameter("email")
-                .passwordParameter("senha")
+            // Demais rotas exigem autenticação
+            .anyRequest().authenticated()
+        )
 
-                // Redirecionamento conforme o papel
-                .successHandler((request, response, authentication) -> {
+        // Configuração de login
+        .formLogin(form -> form
 
-                    boolean admin = authentication.getAuthorities()
-                        .stream()
-                        .anyMatch(authority ->
-                            authority.getAuthority().equals("ROLE_ADMIN")
-                        );
+            .loginPage("/login")
+            .usernameParameter("email")
+            .passwordParameter("senha")
 
-                    if (admin) {
-                        response.sendRedirect(
-                            request.getContextPath() +
-                            "/virtualcup/admin/home"
-                        );
-                    } else {
-                        response.sendRedirect(
-                            request.getContextPath() +
-                            "/virtualcup/cliente/home"
-                        );
-                    }
-                })
+            .successHandler((request, response, authentication) -> {
 
-                .failureUrl("/login?erro")
-                .permitAll()
-            )
+                boolean admin = authentication.getAuthorities().stream()
+                    .anyMatch(authority ->
+                        authority.getAuthority().equals("ROLE_ADMIN")
+                    );
 
-            .logout(logout -> logout
-                .logoutSuccessUrl("/login?logout")
-                .permitAll()
-            );
+                if (admin) {
+
+                    response.sendRedirect(
+                        request.getContextPath() + "/virtualcup/admin/home"
+                    );
+
+                } else {
+
+                    response.sendRedirect(
+                        request.getContextPath() + "/virtualcup/cliente/home"
+                    );
+
+                }
+            })
+
+            .failureUrl("/login?erro")
+            .permitAll()
+        )
+
+        // Configuração de logout
+        .logout(logout -> logout
+            .logoutSuccessUrl("/login?logout")
+            .permitAll()
+        );
 
         return http.build();
     }
 
+    // Criptografia das senhas
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
